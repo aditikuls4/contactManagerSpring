@@ -1,0 +1,21 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">In</title>
+</head>
+<body >
+<section class="myhome">
+<h1>welcome to the Contact Manager<h1>
+<h3>This is the Contact Manager which will manager all your contact and easy to Manager
+<b> Enjoy!!!!</b>
+</h3>
+<br>
+<br>
+<i>Do you want to explore More</i>
+<br>
+<button class="btn btn-primary " th:onclick="|window.location.href='/about'|">About</button>
+
+</section>
+</body>
+</html>

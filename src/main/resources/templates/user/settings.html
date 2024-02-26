@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<section>
+<div class="row" style="margin-top : 2%">
+<h1 class="font-italic text-center" style="margin-left : 40%">Change Password</h1>
+<div class="col-md-12">
+
+<div class="card">
+
+<div class="card-body">
+
+<div th:if="${session.message}" th:classappend="'alert-'+${session.message.type}" class="alert" role="alert">
+  <p th:text="${session.message.content}"></p>
+<th:block th:text="${@message.removeMessageFromSession()}"></th:block>
+</div>
+
+<form method="post" th:action="@{/users/change_password}">
+<!-- old pass -->
+    <div class="form-group">
+    
+    <label for="exampleInputPassword1">Old Password</label>
+    <input name="oldPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter old Password">
+  </div>
+  <!-- new pass -->
+ <div class="form-group">
+    <label for="exampleInputPassword2">New Password</label>
+    <input name="newPassword" type="password" class="form-control" id="exampleInputPassword2" placeholder="Enter New Password">
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="reset" class="btn btn-danger">Reset</button>
+</form>
+
+</div>
+
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+</section>
+</body>
+</html>

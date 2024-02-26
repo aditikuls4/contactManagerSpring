@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container">
+<div class="card">
+
+<div class="card-body text-center">
+
+    <form class="example-form " method="post" th:object="${emailReq}" th:action="@{'/users/sendEmail/' + ${contact.contactId}}" >
+        <div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert  text-center" role="alert">
+  <span th:text="${session.message.content}"></span>
+  <th:block th:text="${@message.removeMessageFromSession()}"></th:block>
+</div>
+        <H1> PLEASE SEND EMAIL</H1>
+        <img style="height: 100px; width:200px;" src="https://logolook.net/wp-content/uploads/2021/06/Gmail-Logo.png" alt="emailimg">
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input name="to"  th:value="${contact.email}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="data.to">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputSubject1">Subject</label>
+            <input name="subject" type="text" class="form-control" id="exampleInputSubject" placeholder="Subject" [(ngModel)]="data.subject">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputSubject1">Message</label>
+            <input name="message" type="text" class="form-control" id="exampleInputMessage" placeholder="Message" [(ngModel)]="data.message">
+          </div>
+
+         
+          <button class="btn1 " type="submit"> Send an Email</button>
+          <button class="btn btn-danger " type="reset"> reset</button>
+          
+      </form>
+   
+</div>
+</div>
+
+</div>
+
+
+</section>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<section>
+
+<div class="card mr-3 ml-3" th:if="${contact}">
+
+<div class="card-body">
+<div class="container">
+<img style="height: 180px; width: 200px; margin-left: 40%" class="profileimg" alt="profile img" src="" th:src="@{'/img/'+${contact.image}}">
+
+
+</div>
+<h2 class="text-center"><span  th:text="${contact.contactName}"></span></h2>
+<h4 class="text-center"><span  th:text="'('+${contact.nickName}+')'"></span></h4>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#ID</th>
+      <th scope="col" th:text="'CMUSER'+${contact.contactId}"></th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Work</th>
+      <td th:text="${contact.work}"></td>
+      
+    </tr>
+    <tr>
+     <th scope="row">Email</th>
+      <td th:text="${contact.email}"></td>
+    </tr>
+    <tr>
+      <th  scope="row">Contact Number</th>
+      <td th:text="${contact.contactNumber}"></td>
+    </tr>
+    <tr>
+  
+  <th >  <span th:utext="${contact.contactDesc}"></span></th>
+   <td></td>
+    </tr>
+ 
+  </tbody>
+  
+</table>
+<div>
+<a th:href="@{'/users/delete/'+${contact.contactId}}" type="button" class="btn btn-danger btn-block" >Delete</a>
+ <form th:action="@{'/users/update_contact/'+${contact.contactId}}" method="post" th:object=${contact}>
+      <button type="submit" class="btn btn-primary btn-block">Update</button>
+      </form>
+      <a th:href="@{'/users/sendEmail/'+${contact.contactId}}" type="button" class="btn btn-block btn-warning" >Email</a>
+</br>
+</div>
+<br>
+
+</div>
+</div>
+<h1 th:unless="${contact}" class="bg-danger text-center mt-3 text-white" >OOPPSS!!!Contact is not available for particular id </h1>
+</section>
+</body>
+</html>
